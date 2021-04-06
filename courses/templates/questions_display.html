@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{course}} Practice Questions {% endblock%}
+{% block content %}
+<br>
+{% for q in questions %}
+    <div class="list-group">
+    <a href="{% url 'question' q.id %}" class="list-group-item">{{ q.title}}</a>
+    </div>
+
+{% endfor %}
+<br>
+{% endblock %}
+{% block content2 %}
+
+{% endblock %}
+

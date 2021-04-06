@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}{{module_disp.title}}{% endblock%}
+{% block content1 %}
+<p class="bg-secondary text-white" align="center">{{course.title}}</p>
+<br>
+{% for m in module %}
+<li class="list-group-item list-group-item-light "><a href="{% url 'module_detail' course.slug m.slug %}">{{ m.title}}</a></li>
+<!--<p>{{m.description}}</p><br>-->
+{% endfor %}
+
+<br>
+<a class="list-group-item list-group-item-light text-info" href = "{% url 'practice' course.slug %}">Practice Questions</a>
+
+{% endblock %}
+{% block content2 %}
+<strong><p class="bg-secondary text-white">{{module_disp.title}}</p></strong>
+<p>{{module_disp.description | safe}}</p>
+<a href="{% url 'tryEditor' %}" class="btn btn-info" style="align:right; width:150px; height:45px;">Try here>>></a>
+{% endblock %}
+

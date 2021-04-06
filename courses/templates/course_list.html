@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}{{course.title}}{% endblock%}
+
+<h1>Courses</h1>
+
+{% block content %}
+<div style="margin-top: 40px;margin-bottom: 40px;margin-right: 150px;margin-left: 80px;background-color: ;">
+<h4 class="bg-secondary text-white">{{course.title}}</h4>
+<br><p>
+{{course.intro | safe}}
+</p>
+<br>
+<p class="bg-secondary text-white">Topics Covered</p>
+{% for m in module %}
+    <ul><a href="{{m.slug}}" class="list-group-item">{{ m.title}}</a></ul>
+
+<!--<p>{{m.description}}</p><br>-->
+{% endfor %}
+</div>
+
+{% endblock %}
+{% block content2 %}
+
+<!--<p>{{module_disp.title}}</p>-->
+<!--<p>{{module_disp.description}}</p>-->
+<!--<iframe height="400px" width="100%" src="https://repl.it/@revathy88/MagentaRealisticAbstraction?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>-->
+{% endblock %}
+
+
