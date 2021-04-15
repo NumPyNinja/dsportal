@@ -85,8 +85,12 @@ WSGI_APPLICATION = 'dsmodule.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'data_structures',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres@123',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
@@ -127,6 +131,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
@@ -134,7 +139,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 print(os.path.join(BASE_DIR))
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'media')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # adding django heroku
 django_heroku.settings(locals())
