@@ -126,7 +126,8 @@ def questions(request, q_id):
             print(message)
             return JsonResponse({'message': message})
             # return render(request, 'editor.html', {'message': message})
-        except:
+        except Exception as e:
+            print('Exception: ' + str(e))
             print("Code running too long...")
             message = "Code running too long. Timed out"
             return JsonResponse({'message': message})
