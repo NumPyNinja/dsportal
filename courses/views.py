@@ -104,8 +104,7 @@ def questions(request, q_id):
         # output = os.system('python ds_code.py')
         try:
             # result = subprocess.run(['python', 'ds_code.py'], capture_output=True, text=True, timeout=3)
-            test_result = subprocess.run(['pytest', 'test_sample.py']
-                                         , capture_output=True, text=True, timeout=5)
+            test_result = subprocess.run(['pytest', 'test_sample.py'], timeout=5)
             exit_code = test_result.returncode
 
             if exit_code == 0:
@@ -118,10 +117,10 @@ def questions(request, q_id):
                 message = " No tests were collected"
             else:
                 message = "Error occurred during submission"
-            output = test_result.stdout
-            pgm_error = test_result.stderr
-            print(output)
-            print(pgm_error)
+            # output = test_result.stdout
+            # pgm_error = test_result.stderr
+            # print(output)
+            # print(pgm_error)
             # return render(request, 'base_iq.html', {'output': output, 'error': pgm_error})
             print(message)
             return JsonResponse({'message': message})
