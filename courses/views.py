@@ -91,7 +91,6 @@ def practice(request, course_slug):
 
 def questions(request, q_id):
     if request.method == "POST" and request.is_ajax:
-        print("post")
         code = request.POST.get("code")
         f = open("ds_code.py", 'w')
         f.write(code)
@@ -106,7 +105,7 @@ def questions(request, q_id):
         try:
             # result = subprocess.run(['python', 'ds_code.py'], capture_output=True, text=True, timeout=3)
             test_result = subprocess.run(['pytest', 'test_sample.py']
-                                         , capture_output=True, text=True, timeout=3)
+                                         , capture_output=True, text=True, timeout=5)
             exit_code = test_result.returncode
 
             if exit_code == 0:
@@ -129,10 +128,9 @@ def questions(request, q_id):
             # return render(request, 'editor.html', {'message': message})
         except:
             print("Code running too long...")
-            pgm_error = "Code running too long. Timed out"
-            return render(request, 'editor.html', {'error': pgm_error})
+            message = "Code running too long. Timed out"
+            return JsonResponse({'message': message})
     practice_question = PracticeQuestions.objects.get(id=q_id)
-    print(practice_question)
     return render(request, 'editor.html', dict(question_to_solve = practice_question))
 
 
